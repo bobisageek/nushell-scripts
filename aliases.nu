@@ -1,2 +1,2 @@
-alias l = 'ls'
-alias c = 'clear'
+export alias l = ls
+export alias c = clear
