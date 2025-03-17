@@ -17,9 +17,16 @@
 # You can remove these comments if you want or leave
 # them for future reference.
 
-$env.config.show_banner = 'short'
+const NU_LIB_DIRS = $NU_LIB_DIRS ++ [($nu.default-config-dir | path join 'modules')]
 
-overlay use aliases
+
+###### literals in $env.config
+
+$env.config.show_banner = 'short'
+$env.config.table.index_mode = 'auto'
+$env.config.use_kitty_protocol = true
+
+###### prompt changes
 
 $env.PROMPT_COMMAND = {||
     let dir = match (do -i { $env.PWD | path relative-to $nu.home-path }) {
@@ -43,13 +50,48 @@ $env.PROMPT_COMMAND = {||
     ] | str join)
     } else { '' }
 
-    $'($last_exit_code)($colored_path)'
+    $'($last_exit_code)🤨 ($colored_path)'
 }
+
+$env.PROMPT_INDICATOR = '> '
+
+$env.TRANSIENT_PROMPT_COMMAND = ''
+# $env.TRANSIENT_PROMPT_INDICATOR = ''
 
 $env.PROMPT_COMMAND_RIGHT = ''
 
 $env.TRANSIENT_PROMPT_COMMAND_RIGHT = ''
 
-const ms_path = if ($nu.default-config-dir | path join 'scripts' 'machine-specific' 'mod.nu' | path exists) { 'machine-specific' } else { null }
+###### overlays
+
+overlay use aliases
+
+const ms_path = if ($nu.default-config-dir | path join 'modules' 'machine-specific' 'mod.nu' | path exists) { 'machine-specific' } else { null }
 
 overlay use $ms_path
+
+###### keybinds??
+
+use keybinds
+
+keybinds upsert {
+    name: refresh_config
+    modifier: control_alt
+    keycode: char_r
+    mode: emacs
+    event: {
+        send: executehostcommand
+        cmd: 'source $nu.config-path; print $"(char newline)🤐"'
+    }
+}
+
+keybinds upsert {
+    name: go_home
+    modifier: control
+    keycode: char_h
+    mode: emacs
+    event: {
+        send: executehostcommand
+        cmd: 'cd'
+    }
+}
