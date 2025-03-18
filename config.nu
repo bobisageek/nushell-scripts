@@ -40,17 +40,28 @@ $env.PROMPT_COMMAND = {||
     let path_segment = $"($path_color)($dir)(ansi reset)"
 
     let colored_path = $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
+
     let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {([
-        (char newline)
-        '❌'
         (ansi rb)
+        '❌: '
         ($env.LAST_EXIT_CODE)
         (ansi reset)
-        (char newline)
+        '|'
     ] | str join)
     } else { '' }
 
-    $'($last_exit_code)🤨 ($colored_path)'
+    let mem = sys mem | select available total | $'(ansi yellow)mem: ($in.available / $in.total * 100 | math floor)% free(ansi reset)|'
+
+    let user = do {
+        let uvar = [USERNAME USER] | where {|k| $k in $env }
+        if ($uvar | is-not-empty) {
+            $'($env | get ($uvar | first))@'
+        } else {
+            ''
+        }
+    }
+
+    $'($last_exit_code)($mem)($user)($colored_path)(char newline)🤨'
 }
 
 $env.PROMPT_INDICATOR = '> '
@@ -81,7 +92,7 @@ keybinds upsert {
     mode: emacs
     event: {
         send: executehostcommand
-        cmd: 'source $nu.config-path; print $"(char newline)🤐"'
+        cmd: 'exec nu'
     }
 }
 
