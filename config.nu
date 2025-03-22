@@ -25,7 +25,7 @@ const NU_LIB_DIRS = $NU_LIB_DIRS ++ [($nu.default-config-dir | path join 'module
 $env.config.show_banner = 'short'
 $env.config.table.index_mode = 'auto'
 $env.config.use_kitty_protocol = true
-$env.FZF_DEFAULT_OPTS_FILE = $env.HOME | path join '.config/fzf/fzfrc'
+$env.FZF_DEFAULT_OPTS_FILE = $nu.home-path | path join '.config/fzf/fzfrc'
 
 ###### prompt changes
 
