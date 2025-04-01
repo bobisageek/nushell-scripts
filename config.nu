@@ -26,6 +26,9 @@ $env.config.show_banner = 'short'
 $env.config.table.index_mode = 'auto'
 $env.config.use_kitty_protocol = true
 $env.FZF_DEFAULT_OPTS_FILE = $nu.home-path | path join '.config/fzf/fzfrc'
+$env.EDITOR = 'nvim'
+$env.config.completions.algorithm = 'fuzzy'
+$env.config.history.file_format = 'sqlite'
 
 ###### prompt changes
 
@@ -68,7 +71,6 @@ $env.PROMPT_COMMAND = {||
 $env.PROMPT_INDICATOR = '> '
 
 $env.TRANSIENT_PROMPT_COMMAND = ''
-# $env.TRANSIENT_PROMPT_INDICATOR = ''
 
 $env.PROMPT_COMMAND_RIGHT = ''
 
