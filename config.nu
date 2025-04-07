@@ -86,9 +86,9 @@ overlay use $ms_path
 
 ###### keybinds??
 
-use keybinds
+use keybinds *
 
-keybinds upsert {
+keybind upsert {
     name: refresh_config
     modifier: control_alt
     keycode: char_r
@@ -99,7 +99,7 @@ keybinds upsert {
     }
 }
 
-keybinds upsert {
+keybind upsert {
     name: go_home
     modifier: control
     keycode: char_h
