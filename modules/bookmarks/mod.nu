@@ -1,13 +1,11 @@
 const bookmarkPath = $nu.data-dir | path join 'bookmarks'
 const record_sep = "\u{1D}"
-export-env {
- $env.BOOKMARKS_FILE = $bookmarkPath | path join 'bookmarks.nuon'
-}
+const BOOKMARKS_FILE = $bookmarkPath | path join 'bookmarks.nuon'
 
 def bm_list [] {
   mkdir $bookmarkPath
-  touch $env.BOOKMARKS_FILE
-  open $env.BOOKMARKS_FILE | collect
+  touch $BOOKMARKS_FILE
+  open $BOOKMARKS_FILE | collect
 }
 
 def "to lines" [] {
@@ -35,7 +33,7 @@ export def "bookmark add" [path?: string, description?: string] {
     reverse |
     uniq-by path |
     where { $in.path | is-not-empty } |
-    save $env.BOOKMARKS_FILE --force
+    save $BOOKMARKS_FILE --force
 }
 
 def multi_sel [] {
@@ -43,7 +41,7 @@ def multi_sel [] {
 }
 
 def single_sel [query: string] {
-  $in | to lines | ^fzf -1 --delimiter $record_sep --with-nth '{1} ({2})' --accept-nth 2 -q $query
+  $in | to lines | ^fzf -0 -1 --delimiter $record_sep --with-nth '{1} ({2})' --accept-nth 2 -q $query
 }
 
 export def "bookmark delete" [...descs: string] {
@@ -52,7 +50,7 @@ export def "bookmark delete" [...descs: string] {
   } else {
     bm_list | multi_sel | lines
   }
-  bm_list | where path not-in $descs | save $env.BOOKMARKS_FILE --force
+  bm_list | where path not-in $descs | save $BOOKMARKS_FILE --force
 }
 
 export def --env "bookmark go" [...queries: string] {
