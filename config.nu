@@ -30,6 +30,12 @@ $env.EDITOR = 'nvim'
 $env.config.completions.algorithm = 'fuzzy'
 $env.config.history.file_format = 'sqlite'
 
+###### add dirs to path
+source add_path.nu
+
+#### cleanup path
+$env.PATH = $env.PATH | uniq
+
 ###### prompt changes
 
 $env.PROMPT_COMMAND = {||
