@@ -9,9 +9,15 @@ export alias gcb = ^git checkout -b
 export alias gco = ^git checkout
 export alias gst = ^git status
 export alias gdh = ^git diff HEAD
+
 export def gbf  [] {
   git branch --format='%(refname:short)' | fzf | gco $in
 }
+
 export def gcp [] {
   gca; git push
+}
+
+export def --env "up" [count: int] {
+  cd (1..$count | each { '..' } | path join)
 }
