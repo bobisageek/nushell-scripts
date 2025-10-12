@@ -1,4 +1,4 @@
-const bookmarkPath = $nu.data-dir | path join 'bookmarks'
+const bookmarkPath = $nu.data-dir | path join 'bookmarks-data'
 const record_sep = "\u{1D}"
 const BOOKMARKS_FILE = $bookmarkPath | path join 'bookmarks.nuon'
 

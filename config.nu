@@ -90,9 +90,13 @@ const ms_path = if ($nu.default-config-dir | path join 'modules' 'machine-specif
 
 overlay use $ms_path
 
+overlay use bookmarks
+
 ###### keybinds??
 
 use keybinds *
+
+keybind upsert $BOOKMARK_GO_KEYBIND
 
 keybind upsert {
     name: refresh_config
