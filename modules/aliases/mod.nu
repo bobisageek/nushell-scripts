@@ -9,9 +9,15 @@ export alias gcb = ^git checkout -b
 export alias gco = ^git checkout
 export alias gst = ^git status
 export alias gdh = ^git diff HEAD
+export alias gb = ^git branch
+export alias gbl = ^git branch --format='%(refname:short)'
 
 export def gbf  [] {
-  git branch --format='%(refname:short)' | fzf | gco $in
+  gbl | fzf | gco $in
+}
+
+export def "g cleanup" [] {
+  gbl | fzf -m | lines | each { ^git branch -D $in }
 }
 
 export def gcp [] {
