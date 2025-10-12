@@ -13,11 +13,11 @@ export alias gb = ^git branch
 export alias gbl = ^git branch --format='%(refname:short)'
 
 export def gbf  [] {
-  gbl | fzf | gco $in
+  gbl | do -c { fzf } | gco $in
 }
 
 export def "g cleanup" [] {
-  gbl | fzf -m | lines | each { ^git branch -D $in }
+  gbl | do -c { fzf -m } | lines | each { ^git branch -D $in }
 }
 
 export def gcp [] {
