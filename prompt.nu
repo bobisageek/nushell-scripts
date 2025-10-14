@@ -1,0 +1,46 @@
+###### prompt changes
+
+$env.PROMPT_COMMAND = {||
+    let dir = match (do -i { $env.PWD | path relative-to $nu.home-path }) {
+        null => $env.PWD
+        '' => '~'
+        $relative_pwd => ([~ $relative_pwd] | path join)
+    }
+
+    let path_color = (if (is-admin) { ansi red_bold } else { ansi green_bold })
+    let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
+    let path_segment = $"($path_color)($dir)(ansi reset)"
+
+    let colored_path = $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
+
+    let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {([
+        (ansi rb)
+        '❌: '
+        ($env.LAST_EXIT_CODE)
+        (ansi reset)
+        '|'
+    ] | str join)
+    } else { '' }
+
+    let mem = sys mem | select available total | $'(ansi yellow)mem: ($in.available / $in.total * 100 | math floor)% free(ansi reset)|'
+
+    let user = do {
+        let uvar = [USERNAME USER] | where {|k| $k in $env }
+        if ($uvar | is-not-empty) {
+            $'($env | get ($uvar | first))@'
+        } else {
+            ''
+        }
+    }
+
+    $'($last_exit_code)($mem)($user)($colored_path)(char newline)🤨'
+}
+
+$env.PROMPT_INDICATOR = '> '
+
+$env.TRANSIENT_PROMPT_COMMAND = ''
+
+$env.PROMPT_COMMAND_RIGHT = ''
+
+$env.TRANSIENT_PROMPT_COMMAND_RIGHT = ''
+
