@@ -26,6 +26,10 @@ $env.config.history.file_format = 'sqlite'
 $env.FZF_DEFAULT_OPTS_FILE = $nu.home-path | path join '.config/fzf/fzfrc'
 $env.EDITOR = 'nvim'
 
+if (which carapace | is-not-empty) {
+  source $"($nu.cache-dir)/carapace.nu"
+}
+
 ###### add dirs to path
 source add_path.nu
 
