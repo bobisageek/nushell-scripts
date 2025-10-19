@@ -1,5 +1,8 @@
 ###### prompt changes
 
+# windows logo for windows, tux for anything else
+let prompt_char = if (uname | get operating-system) has "Windows" { "\u{e70f}" } else { "\u{e712}" }
+
 $env.PROMPT_COMMAND = {||
     let dir = match (do -i { $env.PWD | path relative-to $nu.home-path }) {
         null => $env.PWD
@@ -33,7 +36,7 @@ $env.PROMPT_COMMAND = {||
         }
     }
 
-    $'($last_exit_code)($mem)($user)($colored_path)(char newline)🤨'
+    $'($last_exit_code)($mem)($user)($colored_path)(char newline)($prompt_char) '
 }
 
 $env.PROMPT_INDICATOR = '> '
