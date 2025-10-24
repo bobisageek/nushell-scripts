@@ -28,6 +28,6 @@ export def "g finish" [] {
     let cb = (git branch --show-current); git checkout main; git pull; git branch -d $cb
 }
 
-export def --env "up" [count: int] {
+export def --env "up" [count: int = 1] {
   cd (1..$count | each { '..' } | path join)
 }
