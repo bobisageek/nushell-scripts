@@ -20,6 +20,7 @@ $env.config.table.index_mode = 'auto'
 $env.config.use_kitty_protocol = true
 $env.config.completions.algorithm = 'fuzzy'
 $env.config.history.file_format = 'sqlite'
+$env.config.shell_integration.osc133 = true
 
 ###### a couple of early env vars
 
