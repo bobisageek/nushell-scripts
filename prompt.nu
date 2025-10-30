@@ -4,7 +4,7 @@
 let prompt_char = if (uname | get operating-system) has "Windows" { "\u{e70f}" } else { "\u{e712}" }
 
 $env.PROMPT_COMMAND = {||
-    let dir = match (do -i { $env.PWD | path relative-to $nu.home-path }) {
+    let dir = match (do -i { $env.PWD | path relative-to ('~' | path expand) }) {
         null => $env.PWD
         '' => '~'
         $relative_pwd => ([~ $relative_pwd] | path join)
