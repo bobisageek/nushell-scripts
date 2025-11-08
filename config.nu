@@ -33,9 +33,6 @@ source-env $carapace_file
 ###### add dirs to path
 source add_path.nu
 
-#### cleanup path
-$env.PATH = $env.PATH | uniq
-
 source-env $"($nu.default-config-dir)/prompt.nu"
 
 ###### overlays
@@ -75,3 +72,6 @@ keybind upsert {
         cmd: 'cd'
     }
 }
+#### cleanup path
+$env.PATH = $env.PATH | uniq
+
