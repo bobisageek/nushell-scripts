@@ -36,8 +36,9 @@ $env.PROMPT_COMMAND = {||
     $'($last_exit_code)($mem)($user)($path_segment)(char newline)($prompt_char) '
 }
 
-$env.PROMPT_INDICATOR = '> '
-
+$env.PROMPT_INDICATOR = ' '
+$env.PROMPT_INDICATOR_VI_INSERT = ' '
+$env.PROMPT_INDICATOR_VI_NORMAL = '| '
 $env.TRANSIENT_PROMPT_COMMAND = ''
 
 $env.PROMPT_COMMAND_RIGHT = ''
