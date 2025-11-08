@@ -35,6 +35,9 @@ source add_path.nu
 
 source-env $"($nu.default-config-dir)/prompt.nu"
 
+###### edit mode toggling
+source $"($nu.default-config-dir)/edit_mode.nu"
+
 ###### overlays
 
 overlay use aliases
