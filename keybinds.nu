@@ -1,0 +1,45 @@
+use keybinds *
+
+keybind upsert {
+  name: bookmark_selector
+  modifier: control
+  keycode: char_g
+  mode: [emacs, vi_insert, vi_normal]
+  event: {
+    send: executehostcommand
+    cmd: 'bookmark go'
+  }
+}
+
+keybind upsert {
+  name: refresh_config
+  modifier: control_alt
+  keycode: char_r
+  mode: [emacs, vi_insert, vi_normal]
+  event: {
+    send: executehostcommand
+    cmd: 'exec nu'
+  }
+}
+
+keybind upsert {
+  name: go_home
+  modifier: control
+  keycode: char_h
+  mode: [emacs, vi_insert, vi_normal]
+  event: {
+    send: executehostcommand
+    cmd: 'cd'
+  }
+}
+
+keybind upsert {
+  name: toggle_edit_mode
+  modifier: control_alt
+  keycode: char_e
+  mode: [emacs, vi_insert, vi_normal]
+  event: {
+    send: executehostcommand
+    cmd: 'toggle_edit_mode'
+  }
+}

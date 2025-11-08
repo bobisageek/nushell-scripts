@@ -48,33 +48,8 @@ overlay use $ms_path
 
 overlay use bookmarks
 
-###### keybinds??
+source-env $"($nu.default-config-dir)/keybinds.nu"
 
-use keybinds *
-
-keybind upsert $BOOKMARK_GO_KEYBIND
-
-keybind upsert {
-    name: refresh_config
-    modifier: control_alt
-    keycode: char_r
-    mode: emacs
-    event: {
-        send: executehostcommand
-        cmd: 'exec nu'
-    }
-}
-
-keybind upsert {
-    name: go_home
-    modifier: control
-    keycode: char_h
-    mode: emacs
-    event: {
-        send: executehostcommand
-        cmd: 'cd'
-    }
-}
 #### cleanup path
 $env.PATH = $env.PATH | uniq
 

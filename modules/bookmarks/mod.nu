@@ -60,13 +60,3 @@ export def --env "bookmark go" [...queries: string] {
   }
 }
 
-export const BOOKMARK_GO_KEYBIND = {
-  name: bookmark_selector
-  modifier: control
-  keycode: char_g
-  mode: emacs
-  event: {
-    send: executehostcommand
-    cmd: 'bookmark go'
-  }
-}
