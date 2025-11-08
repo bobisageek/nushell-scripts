@@ -11,10 +11,7 @@ $env.PROMPT_COMMAND = {||
     }
 
     let path_color = (if (is-admin) { ansi red_bold } else { ansi green_bold })
-    let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
     let path_segment = $"($path_color)($dir)(ansi reset)"
-
-    let colored_path = $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
 
     let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {([
         (ansi rb)
@@ -36,7 +33,7 @@ $env.PROMPT_COMMAND = {||
         }
     }
 
-    $'($last_exit_code)($mem)($user)($colored_path)(char newline)($prompt_char) '
+    $'($last_exit_code)($mem)($user)($path_segment)(char newline)($prompt_char) '
 }
 
 $env.PROMPT_INDICATOR = '> '
