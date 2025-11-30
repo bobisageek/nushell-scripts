@@ -48,6 +48,8 @@ overlay use $ms_path
 
 overlay use bookmarks
 
+overlay use gh_rel
+
 source-env $"($nu.default-config-dir)/keybinds.nu"
 
 #### cleanup path
