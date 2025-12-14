@@ -7,7 +7,6 @@ export alias gst = ^git status
 export alias gdh = ^git diff HEAD
 export alias gb = ^git branch
 export alias gbl = ^git branch --format='%(refname:short)'
-export alias bbr = ^rlwrap bb
 
 export def gbf  [] {
   gbl | do -c { fzf } | gco $in
