@@ -43,3 +43,26 @@ keybind upsert {
     cmd: 'toggle_edit_mode'
   }
 }
+
+keybind upsert {
+  name: cd_fzf
+  modifier: alt
+  keycode: char_z
+  mode: [emacs, vi_insert, vi_normal]
+  event: {
+    send: executehostcommand
+    cmd: 'cd_fzf'
+  }
+}
+
+keybind upsert {
+  name: hist_fzf
+    modifier: control
+    keycode: char_r
+    mode: [emacs, vi_insert, vi_normal]
+    event: {
+    send: executehostcommand
+    cmd: 'hist_fzf'
+  }
+}
+
