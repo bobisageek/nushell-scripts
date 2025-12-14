@@ -41,6 +41,7 @@ source $"($nu.default-config-dir)/edit_mode.nu"
 ###### overlays
 
 overlay use aliases
+overlay use git_cmds
 
 const ms_path = if ($nu.default-config-dir | path join 'modules' 'machine-specific' 'mod.nu' | path exists) { 'machine-specific' } else { null }
 
