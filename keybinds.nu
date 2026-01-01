@@ -12,6 +12,17 @@ keybind upsert {
 }
 
 keybind upsert {
+  name: bookmark_go_and_edit
+  modifier: control
+  keycode: char_e
+  mode: [emacs, vi_insert, vi_normal]
+  event: {
+    send: executehostcommand
+    cmd: 'bookmark go; e'
+  }
+}
+
+keybind upsert {
   name: refresh_config
   modifier: control_alt
   keycode: char_r

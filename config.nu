@@ -12,7 +12,6 @@
 
 const NU_LIB_DIRS = $NU_LIB_DIRS ++ [($nu.default-config-dir | path join 'modules')]
 
-
 ###### literals in $env.config
 
 $env.config.show_banner = 'short'
