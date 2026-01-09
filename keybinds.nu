@@ -67,6 +67,18 @@ keybind upsert {
 }
 
 keybind upsert {
+  name: cd_fzf_and_edit
+  modifier: alt_shift
+  keycode: char_z
+  mode: [emacs, vi_insert, vi_normal]
+  event: {
+    send: executehostcommand
+    cmd: 'cd_fzf; e'
+  }
+}
+
+
+keybind upsert {
   name: hist_fzf
     modifier: control
     keycode: char_r
