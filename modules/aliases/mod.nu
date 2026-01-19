@@ -1,6 +1,6 @@
 export alias l = ls
-export alias ll = ls -al
-export alias lll = ^ls -al
+export alias ll = ^ls -altr
+export alias lll = ls -al
 export alias c = ^clear
 export alias e = ^$env.EDITOR
 export alias bbr = ^rlwrap bb

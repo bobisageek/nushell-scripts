@@ -23,7 +23,7 @@ $env.config.shell_integration.osc133 = true
 
 ###### a couple of early env vars
 
-$env.FZF_DEFAULT_OPTS_FILE = $nu.home-path | path join '.config/fzf/fzfrc'
+$env.FZF_DEFAULT_OPTS_FILE = '~/.config/fzf/fzfrc' | path expand
 $env.EDITOR = 'nvim'
 
 const carapace_file = if ($"($nu.cache-dir)/carapace.nu" | path exists) { $"($nu.cache-dir)/carapace.nu" } else { null }
