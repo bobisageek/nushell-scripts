@@ -13,8 +13,8 @@ keybind upsert {
 
 keybind upsert {
   name: bookmark_go_and_edit
-  modifier: control
-  keycode: char_e
+  modifier: control_shift
+  keycode: char_g
   mode: [emacs, vi_insert, vi_normal]
   event: {
     send: executehostcommand
@@ -77,6 +77,16 @@ keybind upsert {
   }
 }
 
+keybind upsert {
+  name: cd_fzf_and_edit_under_dot_config
+  modifier: control
+  keycode: char_e
+  mode: [emacs, vi_insert, vi_normal]
+  event: {
+    send: executehostcommand
+    cmd: 'cd_fzf ( $env.HOME | path join ".config") ["--max-depth" "1"]; e'
+  }
+}
 
 keybind upsert {
   name: hist_fzf

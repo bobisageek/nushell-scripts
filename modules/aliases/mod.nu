@@ -10,10 +10,10 @@ export def --env "up" [count: int = 1] {
   cd (1..$count | each { '..' } | path join)
 }
 
-export def --env cd_fzf [] {
-  let fzf_opts = ["--preview" "fd -I --strip-cwd-prefix --base-directory {}"]
-  let dest = ^fd -I --strip-cwd-prefix --type directory | fzf ...$fzf_opts
-  cd $dest
+export def --env cd_fzf [base_dir: string = '.', fd_opts: list<string> = []] {
+  let fzf_opts = ["--preview" $"fd -I --strip-cwd-prefix --base-directory ($base_dir)/{}"]
+  let dest = ^fd -I --strip-cwd-prefix --type directory --base-directory $base_dir ...$fd_opts | fzf ...$fzf_opts
+  cd ($base_dir | path join $dest)
 }
 
 export def hist_fzf [] {
