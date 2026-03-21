@@ -30,6 +30,11 @@ $env.MANPAGER = 'nvim +Man!'
 const carapace_file = if ($"($nu.cache-dir)/carapace.nu" | path exists) { $"($nu.cache-dir)/carapace.nu" } else { null }
 source-env $carapace_file
 
+const broot_file = if ($"($nu.cache-dir)/broot-cmd.nu" | path exists) { $"($nu.cache-dir)/broot-cmd.nu" } else { null }
+print $broot_file
+use $broot_file *
+
+
 ###### add dirs to path
 source add_path.nu
 
