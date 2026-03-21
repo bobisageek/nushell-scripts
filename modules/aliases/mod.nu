@@ -12,7 +12,7 @@ export def --env "up" [count: int = 1] {
 
 export def --env cd_fzf [base_dir: string = '.', fd_opts: list<string> = []] {
   let fzf_opts = ["--preview" $"fd -I --strip-cwd-prefix --base-directory ($base_dir)/{}"]
-  let dest = ^fd -I --strip-cwd-prefix --type directory --base-directory $base_dir ...$fd_opts | fzf ...$fzf_opts
+  let dest = do -i { ^fd -I --strip-cwd-prefix --type directory --type symlink --base-directory $base_dir ...$fd_opts | fzf ...$fzf_opts }
   cd ($base_dir | path join $dest)
 }
 
