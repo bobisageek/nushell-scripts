@@ -55,6 +55,8 @@ overlay use bookmarks
 
 overlay use gh_rel
 
+overlay use jjutils
+
 source-env $"($nu.default-config-dir)/keybinds.nu"
 
 #### cleanup path
