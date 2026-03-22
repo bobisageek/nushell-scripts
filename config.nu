@@ -31,7 +31,6 @@ const carapace_file = if ($"($nu.cache-dir)/carapace.nu" | path exists) { $"($nu
 source-env $carapace_file
 
 const broot_file = if ($"($nu.cache-dir)/broot-cmd.nu" | path exists) { $"($nu.cache-dir)/broot-cmd.nu" } else { null }
-print $broot_file
 use $broot_file *
 
 
