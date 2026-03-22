@@ -3,6 +3,7 @@
 export alias jjc = ^jj commit
 export alias jjs = ^jj status
 export alias jjd = ^jj diff
+export alias jjmm = ^jj bookmark move main
 
 export def "find-jj-repos"  [] {
   fd -Hg .jj | lines | path dirname
