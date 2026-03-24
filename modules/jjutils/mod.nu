@@ -6,7 +6,7 @@ export alias jjd = ^jj diff
 export alias jjmm = ^jj bookmark move main
 
 export def "find-jj-repos"  [] {
-  fd -Hg .jj | lines | path dirname
+  fd -HLg .jj | lines | path dirname
 }
 
 export def "changed-jj-repos"  [] {
