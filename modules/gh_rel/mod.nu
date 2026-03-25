@@ -22,6 +22,6 @@ export def "ghasset" [repo: string, --not-latest(-l)] {
   let assets = gh release view ($relToUse.tagName) -R $repo --json 'assets' | from json | get assets | get name
   if ($assets | is-empty) { print "No assets"; return}
   $assets | input list -m | each -f {|f| ['-p', $f]} |
-    gh release download -R $repo ...$in
+    gh release download ($relToUse.tagName) --clobber -R $repo ...$in
   print $"Files are in ($download_dir)"
 }
