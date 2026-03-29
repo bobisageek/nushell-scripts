@@ -78,8 +78,19 @@ keybind upsert {
 }
 
 keybind upsert {
-  name: cd_fzf_and_edit_under_dot_config
+  name: cd_fzf_nder_dot_config
   modifier: control
+  keycode: char_e
+  mode: [emacs, vi_insert, vi_normal]
+  event: {
+    send: executehostcommand
+    cmd: 'cd_fzf ( $env.HOME | path join ".config") ["--max-depth" "1"]'
+  }
+}
+
+keybind upsert {
+  name: cd_fzf_and_edit_under_dot_config
+  modifier: control_shift
   keycode: char_e
   mode: [emacs, vi_insert, vi_normal]
   event: {
