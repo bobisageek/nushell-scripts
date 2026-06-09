@@ -22,3 +22,7 @@ export def hist_fzf [] {
   let cmd_line = history | get command | reverse | uniq | to text | run-external $fzf_cmd
   commandline edit -r $cmd_line
 }
+
+export def ztab [] {
+  zellij action list-tabs -j | from json | get name | to text | fzf | zellij action go-to-tab-name $in
+}

@@ -110,3 +110,14 @@ keybind upsert {
   }
 }
 
+keybind upsert {
+  name: zellij_tab_switch
+    modifier: control
+    keycode: char_t
+    mode: [emacs, vi_insert, vi_normal]
+    event: {
+    send: executehostcommand
+    cmd: 'ztab'
+  }
+}
+
