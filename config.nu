@@ -57,6 +57,8 @@ overlay use gh_rel
 
 overlay use jjutils
 
+overlay use podman
+
 overlay use zellij
 
 source-env $"($nu.default-config-dir)/keybinds.nu"
